@@ -17,7 +17,7 @@ install node.js and npm
 install pip3 
 ### `sudo apt install python3-pip`
 install python modules 
-### `pip3 install django djangorestframeworks`
+### `pip3 install django djangorestframeworks pylint-django`
 
 
 ## Start a Django project 
@@ -33,5 +33,5 @@ To make an django app :
 Whenever you make a change to the database run the following command
 ### `pyhton3 ./manage.py makemigrations`
 ### `pyhton3 ./manage.py migrate`
-To run the server typ command
+To run the server type command
 ### `pyhton3 ./manage.py runserver`
