@@ -10,9 +10,10 @@ Install python3
 2. Node and NPM
 
 install node.js and npm
+### `sudo apt install nodejs`
 
 3. PIP (Django and Django Rest Framework)
-### `sudo apt install nodejs`
+
 install pip3 
 ### `sudo apt install python3-pip`
 install python modules 
