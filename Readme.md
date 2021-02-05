@@ -2,7 +2,7 @@
 
 Stuff you need installed on your computer:
 
-1. Pyhton
+1. Python
 
 Install python3 
 #### `sudo apt install python3`
