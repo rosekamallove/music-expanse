@@ -1,9 +1,13 @@
+"""
+All the models (the single, definitive source of information) for the app, 
+which python converts to a database and does all the database functions on its own.
+"""
 from django.db import models
 import string
 import random
 
 
-def generateUniqueCode(): #=> Generates the unique code for each room
+def generateUniqueCode(): # => Generates the unique code for each room
     length = 6
 
     while True:
