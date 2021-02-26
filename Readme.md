@@ -1,4 +1,4 @@
-_Note: This is still under development and I @rosekamallove is the only developer, so the experience may not be the smoothest and new features maybe added_
+_Note: This is still under development and I [@rosekamallove](https://github.com/rosekamallove/) is the only developer, so the experience may not be the smoothest and new features maybe added_
 ## Music Room
 
 Stuff you need installed on your computer:
