@@ -3,13 +3,17 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 </br></br></br>
 
--> Install dependencies
-1. PIP (Django and Django Rest Framework):
+-> Install dependencies:
 
-    sudo apt install python3-pip python3-django
+-> Python:
 
-Install python modules:
-```pip3 install django djangorestframeworks pylint-django```
+    sudo apt install python3-pip python3-django nodejs npm
+    pip3 install django djangorestframeworks pylint-django
+
+-> NPM:
+
+    cd ./frontend ; npm i
+
 
 
 </br>
