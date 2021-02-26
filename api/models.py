@@ -3,20 +3,17 @@ import string
 import random
 
 
-def generateUniqueCode():  # this fucntion generates the unique code for each room
+def generateUniqueCode(): #=> Generates the unique code for each room
     length = 6
 
     while True:
         code = ''.join(random.choices(string.ascii_uppercase, k=length))
-        # thi is tho confirm that every code is unique
         if Room.objects.filter(code=code).count() == 0:
             break
     return code
 
 
-# Create your models here.
-
-
+#Model for each room the user makes:
 class Room(models.Model):
     code = models.CharField(max_length=8, default="", unique=True)
     host = models.CharField(max_length=50, unique=True)
