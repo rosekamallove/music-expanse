@@ -1,6 +1,14 @@
 
 ## Music Room
-Tired of arguing over music in a party or a gathering? Here, make a virtual room add people with the unique _RoomID_ and let the members of the room control the music through a _voting system_.
+Tired of arguing over music in a party or a gathering? 
+
+Here, make a _```virtual room```_ add people with the unique _```RoomID```_ and let the members of the room control the music through a _```voting system```_.
+
+But Rose or whatever you name is, how does it work?
+
+It works just like _Magic_
+
+Ok no, actually it uses the _```Spotify's Public API```_  So, log in and start partying, forget about all the work you have to get done and enjoy!
 </br></br></br>
 
 _Note: This is still under development and I [@rosekamallove](https://github.com/rosekamallove/) is the only developer, so the experience may not be the smoothest and new features maybe added_
@@ -9,30 +17,30 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 <hr>
 
-### Dependencies:
--> Python:
+- ### Dependencies:
+    - Python:
 
-    sudo apt install python3-pip python3-django nodejs npm
-    pip3 install django djangorestframeworks pylint-django
+            sudo apt install python3-pip python3-django nodejs npm
+            pip3 install django djangorestframeworks pylint-django
 
--> NPM:
+    - NPM:
 
-    cd ./frontend ; npm i
+            cd ./frontend ; npm i
 
 
 
 </br>
 
-### -> To run the development server: 
+- ### To run the development server: 
 
-Whenever you make a change to the database run the following command :
+    - Whenever you make a change to the database run the following command :
 
-    pyhton3 ./manage.py makemigrations
-    pyhton3 ./manage.py migrate
+        pyhton3 ./manage.py makemigrations
+        pyhton3 ./manage.py migrate
 
-To run the server type command
+    - To run the server type command
     
-    pyhton3 ./manage.py runserver
+            pyhton3 ./manage.py runserver
 
 </br>
 <hr>
