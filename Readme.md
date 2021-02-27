@@ -4,7 +4,7 @@ Tired of arguing over music in a party or a gathering?
 
 Here, make a _```virtual room```_ add people with the unique _```RoomID```_ and let the members of the room control the music through a _```voting system```_.
 
-But Rose or whatever you name is, how does it work?
+But Rose or whatever your name is, how does it work?
 
 It works just like _Magic_
 
