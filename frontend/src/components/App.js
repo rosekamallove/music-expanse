@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import CreateRoomPage from "./CreateRoomPage";
 import HomePage from "./HomePage";
+import RoomJoinPage from "./RommJoinPage";
 
 //Setting up a class in react:
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
     }
   }
 
@@ -15,10 +16,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <HomePage />
-
+        <HomePage/>
       </div>
-    ); //embedding javascript code into the the return statement 
+    ); //embedding javascript code into the the return statement
   }
 }
 
