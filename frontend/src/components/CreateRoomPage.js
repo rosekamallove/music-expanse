@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { render } from 'react-dom';
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -9,8 +10,19 @@ import { Link } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main : '#1ed760'
+    },
+    secondary: {
+      main: '#191414'
+    }
+  }
+});
 export default class CreateRoomPage extends Component {
   defaultVotes=2;
 
@@ -20,6 +32,7 @@ export default class CreateRoomPage extends Component {
 
   render() {
     return (
+      <MuiThemeProvider theme={theme}>
     <Grid container spacing={1}>
       <Grid item xs={12} align="center">     
       <Typography component='h4' variant="h4">
@@ -78,6 +91,7 @@ export default class CreateRoomPage extends Component {
         </Grid>
       </Grid>
     </Grid>
+    </MuiThemeProvider>
     );
   }
 }

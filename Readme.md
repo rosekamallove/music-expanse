@@ -44,6 +44,16 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 </br>
 <hr>
 
+### ColorScheme:
+
+<p align="center">
+<img src="./frontend/static/images/colorSchema.jpg" align="center" width="350"/>
+</p>
+
+<br/>
+
+<hr>
+
 - ### Node Packages
 
     - _```babel```_ transpiles our code to work with all the different browsers.
