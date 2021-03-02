@@ -18,12 +18,11 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 <hr>
 
 - ### Dependencies:
-    - Python:
+    - [Python](https://www.python.org/downloads/):
 
-            sudo apt install python3-pip python3-django nodejs npm
-            pip3 install django djangorestframeworks pylint-django
+            pip install -r requirements.txt
 
-    - NPM:
+    - [NodeJS](https://nodejs.org/en/download/):
 
             cd ./frontend ; npm i
 
@@ -33,19 +32,19 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 - ### To run the development server: 
 
-    - Whenever you make a change to the database run the following command :
+    - Whenever you make a change to the database run the following command:
 
-            pyhton3 ./manage.py makemigrations
-            pyhton3 ./manage.py migrate
+            pyhton ./manage.py makemigrations
+            pyhton ./manage.py migrate
 
-    - To run the server type command
+    - To run the server run the following command:
     
-            pyhton3 ./manage.py runserver
+            pyhton ./manage.py runserver
 
 </br>
 <hr>
 
-- ### NPM Packages
+- ### Node Packages
 
     - _```babel```_ transpiles our code to work with all the different browsers.
     - _```webpack```_ transpiles and bundles all of our javascript into a single file with no spaces hence, optimizing our code.
