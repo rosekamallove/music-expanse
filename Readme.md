@@ -6,7 +6,7 @@ Here, make a _```virtual room```_ add people with the unique _```RoomID```_ and 
 
 But Rose or whatever your name is, how does it work?
 
-It works just like _Magic_
+It works like _Magic_
 
 Ok no, actually it uses the _```Spotify's Public API```_  So, log in and start partying, forget about all the work you have to get done and enjoy!
 </br></br></br>
@@ -35,8 +35,8 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
     - Whenever you make a change to the database run the following command :
 
-        pyhton3 ./manage.py makemigrations
-        pyhton3 ./manage.py migrate
+            pyhton3 ./manage.py makemigrations
+            pyhton3 ./manage.py migrate
 
     - To run the server type command
     
