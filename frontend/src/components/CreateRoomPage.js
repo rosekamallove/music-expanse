@@ -12,7 +12,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-
+//Theme for material UI
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -23,11 +23,36 @@ const theme = createMuiTheme({
     }
   }
 });
+
 export default class CreateRoomPage extends Component {
   defaultVotes=2;
 
   constructor(props) {
     super(props);
+    this.state={
+      guestCanPause: true,
+      votesToSkip: this.defaultVotes,
+    };
+    this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
+    this.handleVotesChange = this.handleVotesChange.bind(this);
+    this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
+  }
+
+  handleVotesChange(e) {
+    this.setState({
+      votesToSkip: e.target.value,
+    });
+  }
+
+  handleGuestCanPauseChange(e){
+    this.setState({
+      guestCanPause: e.target.value === 'true' ? true : false,
+    });
+  }
+
+  handleRoomButtonPressed(){
+    console.log(this.state);
+
   }
 
   render() {
@@ -45,7 +70,7 @@ export default class CreateRoomPage extends Component {
             <div align='center'>
               Guest Control of Playback State
             </div>
-            <RadioGroup row defaultValue='true'>
+            <RadioGroup row defaultValue='true' onChange={this.handleGuestCanPauseChange}>
               <FormControlLabel
               value="true" 
               control={<Radio color="primary"/>}
@@ -65,6 +90,7 @@ export default class CreateRoomPage extends Component {
           <FormControl>
             <TextField 
             required={true} 
+            onChange={this.handleVotesChange}
             type="number" 
             defaultValue={this.defaultVotes}
             inputProps={{
@@ -79,12 +105,18 @@ export default class CreateRoomPage extends Component {
             </FormHelperText>
           </FormControl>
         <Grid item xs={12} align="center">
-          <Button color="primary" variant="contained">
+          <Button 
+          onClick={this.handleRoomButtonPressed}
+          color="primary" 
+          variant="contained">
             Create A Room
           </Button>
         </Grid>
         <Grid item xs={12} align="center">
-          <Button color="secondary" variant="contained" to="/" component={Link}>
+          <Button 
+          color="secondary" 
+          variant="contained" to="/" 
+          component={Link}>
            Back 
           </Button>
         </Grid>
