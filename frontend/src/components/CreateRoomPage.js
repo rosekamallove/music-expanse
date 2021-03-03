@@ -10,19 +10,12 @@ import { Link } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import {MuiThemeProvider} from "@material-ui/core";
+import theme from './Theme/normal';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-//Theme for material UI
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main : '#1ed760'
-    },
-    secondary: {
-      main: '#191414'
-    }
-  }
-});
+
 
 export default class CreateRoomPage extends Component {
   defaultVotes=2;
@@ -101,7 +94,7 @@ export default class CreateRoomPage extends Component {
             required={true} 
             onChange={this.handleVotesChange}
             type="number" 
-            color="primaroy"
+            color="primary"
             defaultValue={this.defaultVotes}
             inputProps={{
               min: 1,
@@ -116,18 +109,20 @@ export default class CreateRoomPage extends Component {
           </FormControl>
         <Grid item xs={12} align="center">
           <Button 
+	        startIcon={<AddCircleIcon/>}
           onClick={this.handleRoomButtonPressed}
           color="primary" 
           variant="contained">
-            Create A Room
+            Create 
           </Button>
         </Grid>
         <Grid item xs={12} align="center">
           <Button 
+	        startIcon={<ArrowBackIosIcon/>}
           color="secondary" 
           variant="contained" to="/" 
           component={Link}>
-           Back 
+          Back
           </Button>
         </Grid>
         </Grid>
