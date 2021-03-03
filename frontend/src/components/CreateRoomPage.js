@@ -88,6 +88,7 @@ export default class CreateRoomPage extends Component {
             </RadioGroup>
           </FormHelperText>
         </FormControl>
+      </Grid>
         <Grid item xs={12} align="center">
           <FormControl>
             <TextField 
@@ -107,6 +108,7 @@ export default class CreateRoomPage extends Component {
               </div>
             </FormHelperText>
           </FormControl>
+        </Grid>
         <Grid item xs={12} align="center">
           <Button 
 	        startIcon={<AddCircleIcon/>}
@@ -125,8 +127,6 @@ export default class CreateRoomPage extends Component {
           Back
           </Button>
         </Grid>
-        </Grid>
-      </Grid>
     </Grid>
     </MuiThemeProvider>
     );
