@@ -9,21 +9,40 @@ from django.http import HttpResponse
 '''
 An API view rendering list format of the Room model:
 '''
-class RoomView(generics.ListAPIView): 
+
+
+class RoomView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
+
+class GetRoom(APIView):
+    serializers_class = RoomSerializer
+    lookup_url_kwarg = 'code'
+
+    def get(self, request, format=None):
+        code = request.GET.get(self.lookup_url_kwarg)
+        if code != None:
+            room = Room.objects.filter(code=code)
+            if len(room) > 0:
+                data = RoomSerializer(room[0]).data
+                data['is_host'] = self.request.session.session_key == room[0].host
+                return Response(data, status=status.HTTP_200_OK)
+            return Response({'Rooms Not Found': 'Invalid Room Code.'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'Bad Request': 'Code pramenter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 '''
 An APIView which will let us view a list of all of the different rooms:
 '''
+
+
 class CreateRoomView(APIView):
     serializer_class = CreateRoomSerializer
 
     def post(self, request, format=None):
         if not self.request.session.exists(self.request.session.session_key):
-           self.request.session.create()
+            self.request.session.create()
 
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
@@ -37,7 +56,8 @@ class CreateRoomView(APIView):
                 room.votes_to_skip = votes_to_skip
                 room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
             else:
-                room = Room(host=host, guest_can_pause=guest_can_pause, votes_to_skip=votes_to_skip)
+                room = Room(host=host, guest_can_pause=guest_can_pause,
+                            votes_to_skip=votes_to_skip)
                 room.save()
-            
+
             return Response(RoomSerializer(room).data, status=status.HTTP_200_OK)
