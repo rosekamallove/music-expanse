@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { TextField, Button, Grid, Typography, MuiThemeProvider } from '@material-ui/core';
 import { Link } from "react-router-dom";
-import CheckIcon from '@material-ui/icons/Check';
 import theme from './Theme/normal';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -13,11 +13,16 @@ export default class RoomJoinPage extends Component {
     this.state={
       roomCode:"",
       error: ""
-    }
+    };
+
+    this.handleTextFieldChange=this.handleTextFieldChange.bind(this);
+    this.roomButtonPress=this.roomButtonPress.bind(this);
+    
   }
 
   render() {
     return(
+    <div className="center">
     <MuiThemeProvider theme={theme}>
       <Grid container space={1}> 
         <Grid item xs={12} align="center">
@@ -33,6 +38,7 @@ export default class RoomJoinPage extends Component {
             value={this.state.roomCode}
             helperText={this.state.error}
             variant="outlined"
+            onChange={this._handleTextFieldChange}
             InputProps={{
               startAdornment: (
               <InputAdornment position="start">
@@ -42,15 +48,14 @@ export default class RoomJoinPage extends Component {
             }} 
             />
         </Grid>
-        
         <Grid item xs={12} align="center">
           <Button 
           variant="contained" 
           color="primary" 
-          // onClick
-	        startIcon={<CheckIcon/>}
+          onClick={this.roomButtonPress}
+	        startIcon={<CheckCircleIcon/>}
           >
-           Join 
+          Join 
           </Button>
         </Grid>
         <Grid item xs={12} align="center">
@@ -66,6 +71,17 @@ export default class RoomJoinPage extends Component {
         </Grid>
       </Grid>
     </MuiThemeProvider>
+  </div>
     );
   }
+
+  handleTextFieldChange(e) {
+    this.setState({
+      roomCode: e.target.value
+    })
+  }
+  roomButtonPress(){
+    console.log(this.state.roomCode);
+  }
 }
+

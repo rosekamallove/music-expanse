@@ -13,11 +13,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import {MuiThemeProvider} from "@material-ui/core";
 import theme from './Theme/normal';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import StickyFooter from './TopBarAndFooter/Footer.js'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Footer from "./TopBarAndFooter/Footer";
 
 
 
-export default class CreateRoomPage extends Component {
+export default class CreateRoomPage extends React.Component {
   defaultVotes=2;
 
   constructor(props) {
@@ -59,7 +61,8 @@ export default class CreateRoomPage extends Component {
 
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
+      <div className="center">
+    <MuiThemeProvider theme={theme}>
     <Grid container spacing={1}>
       <Grid item xs={12} align="center">     
       <Typography component='h4' variant="h4">
@@ -129,6 +132,7 @@ export default class CreateRoomPage extends Component {
         </Grid>
     </Grid>
     </MuiThemeProvider>
+    </div>
     );
   }
 }
