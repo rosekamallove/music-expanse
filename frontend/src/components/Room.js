@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Grid, Button, Typography, MuiThemeProvider} from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CancelIcon from '@material-ui/icons/Cancel';
+import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import theme from './Theme/normal';
+import CreateRoomPage from './CreateRoomPage';
 
 export default class Room extends Component {
   constructor(props) {
@@ -11,10 +14,14 @@ export default class Room extends Component {
       votesToSkip: 2,
       guestCanPause: false,
       isHost: false,
+      showSettings: false,
     };
     this.roomCode = this.props.match.params.roomCode;
     this.getRoomDetails();
     this.leaveButtonPressed = this.leaveButtonPressed.bind(this);
+    this.updateShowSettings = this.updateShowSettings.bind(this);
+    this.renderSettingsButton = this.renderSettingsButton.bind(this);
+    this.renderSettings= this.renderSettings.bind(this);
   }
 
   getRoomDetails() {
@@ -58,8 +65,44 @@ export default class Room extends Component {
     });
   }
 
+  updateShowSettings(value) {
+    this.setState({
+      showSettings: value,
+    });
+  }
+
+  renderSettings() {
+    return(
+    <div className="center">
+      <MuiThemeProvider theme={theme}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} align="center">
+            <CreateRoomPage update={true} votesToSkip={this.state.votesToSkip} guestCanPause={this.state.guestCanPause} roomCode={this.roomCode} updateCallback={()=>{}}/>
+          </Grid>
+          <Grid item xs={12} align="center">
+            <Button variant="contained" color="secondary" onClick={()=> this.updateShowSettings(false)} startIcon={<CancelIcon/>}>Close</Button> 
+          </Grid>
+        </Grid>
+      </MuiThemeProvider>
+    </div>
+    );
+  }
+
+  renderSettingsButton(){
+    return (
+          <Grid item xs={12} align="center">
+            <Button startIcon={<SettingsApplicationsIcon/>} variant="contained" color="primary" onClick={()=> this.updateShowSettings(true)}>
+              Settings
+            </Button>
+          </Grid>
+    );
+  }
 
   render() {
+    if (this.state.showSettings) {
+      return this.renderSettings();
+    }
+
     return (
     <div className="center">
     <MuiThemeProvider theme={theme}>
@@ -84,6 +127,7 @@ export default class Room extends Component {
             Host: {this.state.isHost.toString()}
           </Typography>
         </Grid>
+        {this.state.isHost ? this.renderSettingsButton() : null}
         <Grid item xs={12} align="center">
           <Button
             variant="contained"
