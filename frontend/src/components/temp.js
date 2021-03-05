@@ -1,97 +1,121 @@
 import React, { Component } from "react";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { TextField, Button, Grid, Typography, MuiThemeProvider } from '@material-ui/core';
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
 import { Link } from "react-router-dom";
-import theme from './Theme/normal';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import CodeIcon from '@material-ui/icons/Code';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
+export default class CreateRoomPage extends Component {
+  defaultVotes = 2;
 
-export default class RoomJoinPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roomCode: "",
-      error: "",
+      guestCanPause: true,
+      votesToSkip: this.defaultVotes,
     };
-    this.handleTextFieldChange = this.handleTextFieldChange.bind(this);
-    this.roomButtonPressed = this.roomButtonPressed.bind(this);
+
+    this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
+    this.handleVotesChange = this.handleVotesChange.bind(this);
+    this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
   }
 
-  render() {
-    return (
-        <div className="center">
-    <MuiThemeProvider theme={theme}>
-      <Grid container spacing={1}>
-        <Grid item xs={12} align="center">
-          <Typography variant="h4" component="h4">
-            Join a Room
-          </Typography>
-        </Grid>
-        <Grid item xs={12} align="center">
-          <TextField
-            error={this.state.error}
-            label="Code"
-            placeholder="Enter a Room Code"
-            value={this.state.roomCode}
-            helperText={this.state.error}
-            variant="outlined"
-            onChange={this.handleTextFieldChange}
-            InputProps={{
-                startAdornment: (
-                    <InputAdornment position="start">
-                        <CodeIcon/>
-                    </InputAdornment>
-                ),
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} align="center">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.roomButtonPressed}
-            startIcon={<CheckCircleIcon/>}
-          >
-            Enter Room
-          </Button>
-        </Grid>
-        <Grid item xs={12} align="center">
-          <Button variant="contained" color="secondary" to="/" component={Link} startIcon={<ArrowBackIosIcon/>}>
-            Back
-          </Button>
-        </Grid>
-      </Grid>
-</MuiThemeProvider>
-    </div>
-    );
-  }
-
-  handleTextFieldChange(e) {
+  handleVotesChange(e) {
     this.setState({
-      roomCode: e.target.value,
+      votesToSkip: e.target.value,
     });
   }
 
-  roomButtonPressed() {
+  handleGuestCanPauseChange(e) {
+    this.setState({
+      guestCanPause: e.target.value === "true" ? true : false,
+    });
+  }
+
+  handleRoomButtonPressed() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        code: this.state.roomCode,
+        votes_to_skip: this.state.votesToSkip,
+        guest_can_pause: this.state.guestCanPause,
       }),
     };
-    fetch("/api/join-room", requestOptions)
-      .then((response) => {
-        if (response.ok) {
-          this.props.history.push(`/room/${this.state.roomCode}`);
-        } else {
-          this.setState({ error: "Room not found." });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetch("/api/create-room", requestOptions)
+      .then((response) => response.json())
+      .then((data) => this.props.history.push("/room/" + data.code));
+  }
+
+  render() {
+    return (
+      <Grid container spacing={1}>
+        <Grid item xs={12} align="center">
+          <Typography component="h4" variant="h4">
+            Create A Room
+          </Typography>
+        </Grid>
+        <Grid item xs={12} align="center">
+          <FormControl component="fieldset">
+            <FormHelperText>
+              <div align="center">Guest Control of Playback State</div>
+            </FormHelperText>
+            <RadioGroup
+              row
+              defaultValue="true"
+              onChange={this.handleGuestCanPauseChange}
+            >
+              <FormControlLabel
+                value="true"
+                control={<Radio color="primary" />}
+                label="Play/Pause"
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="false"
+                control={<Radio color="secondary" />}
+                label="No Control"
+                labelPlacement="bottom"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} align="center">
+          <FormControl>
+            <TextField
+              required={true}
+              type="number"
+              onChange={this.handleVotesChange}
+              defaultValue={this.defaultVotes}
+              inputProps={{
+                min: 1,
+                style: { textAlign: "center" },
+              }}
+            />
+            <FormHelperText>
+              <div align="center">Votes Required To Skip Song</div>
+            </FormHelperText>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} align="center">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={this.handleRoomButtonPressed}
+          >
+            Create A Room
+          </Button>
+        </Grid>
+        <Grid item xs={12} align="center">
+          <Button color="secondary" variant="contained" to="/" component={Link}>
+            Back
+          </Button>
+        </Grid>
+      </Grid>
+    );
   }
 }

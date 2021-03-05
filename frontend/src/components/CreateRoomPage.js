@@ -45,18 +45,18 @@ export default class CreateRoomPage extends React.Component {
     });
   }
 
-  handleRoomButtonPressed(){
+  handleRoomButtonPressed() {
     const requestOptions = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body:   JSON.stringify({
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         votes_to_skip: this.state.votesToSkip,
-        guest_can_pause: this.state.guestCanPause
+        guest_can_pause: this.state.guestCanPause,
       }),
     };
-    fetch('/api/create-room', requestOptions)
-    .then((response) => response.json())
-    .then((data) => this.props.history.push("/room/" + data.code)); 
+    fetch("/api/create-room", requestOptions)
+      .then((response) => response.json())
+      .then((data) => this.props.history.push("/room/" + data.code));
   }
 
   render() {
