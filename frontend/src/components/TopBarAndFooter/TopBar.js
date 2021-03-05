@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function ButtonAppBar() {
   const classes = useStyles();
-
-  return (
+  ButtonAppBar() {
+   return(
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
@@ -36,5 +37,13 @@ export default function ButtonAppBar() {
         </Toolbar>
       </AppBar>
     </div>
-  );
+   );
+  }
+
+  render() {
+    return(
+      {this.ButtonAppBar()}
+    );
+  }
+
 }
