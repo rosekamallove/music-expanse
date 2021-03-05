@@ -1,5 +1,8 @@
-frontend/node_modules
-frontend/__pychache__
+/frontend/node_modules
+/frontend/__pychache__
+/frontend/migrations
 __pychache__
-migrations/__pychache__
-music_rooms/__pychache__
+/api/migrations
+music_room/__pychache__
+db.sqlite3
+.vscode
