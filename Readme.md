@@ -31,15 +31,15 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 - ### To run the development server:
 
-  - Whenever you make a change to the database run the following command:
-
-          pyhton ./manage.py makemigrations
-          pyhton ./manage.py migrate
-
   - To run the app create two instances of the terminal and run the following commands:
 
           pyhton manage.py runserver
           cd forntend ; npm run dev
+
+  - Whenever you make a change to the database run the following command:
+
+          pyhton ./manage.py makemigrations
+          pyhton ./manage.py migrate
 
 </br>
 <hr>
