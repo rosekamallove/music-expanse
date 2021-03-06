@@ -21,8 +21,6 @@ export default class RoomJoinPage extends Component {
 
   render() {
     return (
-        <div className="center">
-    <MuiThemeProvider theme={theme}>
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
           <Typography variant="h4" component="h4">
@@ -63,8 +61,6 @@ export default class RoomJoinPage extends Component {
           </Button>
         </Grid>
       </Grid>
-</MuiThemeProvider>
-    </div>
     );
   }
 

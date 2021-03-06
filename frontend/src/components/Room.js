@@ -73,18 +73,24 @@ export default class Room extends Component {
 
   renderSettings() {
     return(
-    <div className="center">
-      <MuiThemeProvider theme={theme}>
         <Grid container spacing={1}>
           <Grid item xs={12} align="center">
-            <CreateRoomPage update={true} votesToSkip={this.state.votesToSkip} guestCanPause={this.state.guestCanPause} roomCode={this.roomCode} updateCallback={()=>{}}/>
+            <CreateRoomPage 
+              update={true} 
+              votesToSkip={this.state.votesToSkip} 
+              guestCanPause={this.state.guestCanPause} 
+              roomCode={this.roomCode} 
+              updateCallback={()=>{}}/>
           </Grid>
           <Grid item xs={12} align="center">
-            <Button variant="contained" color="secondary" onClick={()=> this.updateShowSettings(false)} startIcon={<CancelIcon/>}>Close</Button> 
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              onClick={()=> this.updateShowSettings(false)} startIcon={<CancelIcon/>}>
+                Close
+            </Button> 
           </Grid>
         </Grid>
-      </MuiThemeProvider>
-    </div>
     );
   }
 
@@ -104,8 +110,6 @@ export default class Room extends Component {
     }
 
     return (
-    <div className="center">
-    <MuiThemeProvider theme={theme}>
      <Grid container spacing={1}>
         <Grid item xs={12} align="center">
           <Typography variant="h4" component="h4">
@@ -139,8 +143,6 @@ export default class Room extends Component {
           </Button>
         </Grid>
       </Grid> 
-    </MuiThemeProvider>
-    </div>
     );
   }
 }

@@ -6,18 +6,26 @@ import theme from './Theme/normal';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import StickyFooter from './TopBarAndFooter/Footer.js'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import UpdateIcon from '@material-ui/icons/Update';
 import Footer from "./TopBarAndFooter/Footer";
 
 
 
 export default class CreateRoomPage extends Component {
-  defaultVotes = 2;
+
+  static defaultProps = {
+    votesToSkip: 2,
+    guestCanPause:  true,
+    update: false,
+    roomCode: null,
+    updateCallback: () => {},
+  };
 
   constructor(props) {
     super(props);
     this.state = {
-      guestCanPause: true,
-      votesToSkip: this.defaultVotes,
+      guestCanPause: this.props.guestCanPause,
+      votesToSkip: this.votesToSkip,
     };
 
     this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
@@ -51,14 +59,67 @@ export default class CreateRoomPage extends Component {
       .then((data) => this.props.history.push("/room/" + data.code));
   }
 
-  render() {
+  handleUpdateButtonPressed() {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        votes_to_skip: this.state.votesToSkip,
+        guest_can_pause: this.state.guestCanPause,
+      }),
+    };
+    fetch("/api/create-room", requestOptions)
+      .then((response) => response.json())
+      .then((data) => this.props.history.push("/room/" + data.code));
+  }  
+
+  renderCreateButtons () {
     return (
-      <div className="center">
-        <MuiThemeProvider theme={theme}>
+      <Grid container spacing={1}>
+         <Grid item xs={12} align="center">
+            <Button 
+	            startIcon={<AddCircleIcon/>}
+              onClick={this.handleRoomButtonPressed}
+              color="primary" 
+              variant="contained">
+                Create 
+            </Button>
+          </Grid>
+          <Grid item xs={12} align="center">
+            <Button 
+	          startIcon={<ArrowBackIosIcon/>}
+            color="secondary" 
+            variant="contained" to="/" 
+            component={Link}>
+            Back
+            </Button>
+          </Grid>
+      </Grid>
+    );
+  }
+
+
+  renderUpdateButtons () {
+    return (
+      <Grid item xs={12} align="center">
+            <Button 
+	            startIcon={<UpdateIcon/>}
+              onClick={this.handleRoomButtonPressed}
+              color="primary" 
+              variant="contained">
+                Update Room 
+            </Button>
+          </Grid>
+    );
+  }
+
+  render() {
+    const title = this.props.update ? "Update Room" : "Create a Room";
+    return (
           <Grid container spacing={1}>
             <Grid item xs={12} align="center">     
               <Typography component='h4' variant="h4">
-                Create A Room
+                {title} 
               </Typography>
             </Grid>
             <Grid item xs={12} align="center">
@@ -91,7 +152,7 @@ export default class CreateRoomPage extends Component {
               onChange={this.handleVotesChange}
               type="number" 
               color="primary"
-              defaultValue={this.defaultVotes}
+              defaultValue={this.state.votesToSkip}
               inputProps={{
                 min: 1,
                 style: {textAlign: "center"},
@@ -104,27 +165,8 @@ export default class CreateRoomPage extends Component {
               </FormHelperText>
            </FormControl>
           </Grid>
-          <Grid item xs={12} align="center">
-            <Button 
-	            startIcon={<AddCircleIcon/>}
-              onClick={this.handleRoomButtonPressed}
-              color="primary" 
-              variant="contained">
-                Create 
-            </Button>
+               {this.props.update ? this.renderUpdateButtons() : this.renderCreateButtons()}
           </Grid>
-          <Grid item xs={12} align="center">
-            <Button 
-	          startIcon={<ArrowBackIosIcon/>}
-            color="secondary" 
-            variant="contained" to="/" 
-            component={Link}>
-            Back
-            </Button>
-          </Grid>
-          </Grid>
-        </MuiThemeProvider>
-      </div>
     );
   }
 }

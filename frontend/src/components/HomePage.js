@@ -35,8 +35,6 @@ export default class HomePage extends Component {
 
   renderHomePage() {
     return (
-<div className="center">
-  <MuiThemeProvider theme={theme}>
       <Grid container spacing={3}>
         <Grid item xs={12} align="center">
           <Typography variant="h3" compact="h3">
@@ -54,8 +52,6 @@ export default class HomePage extends Component {
           </ButtonGroup>
         </Grid>
       </Grid>
-    </MuiThemeProvider>
-</div>
 );
   }
 
@@ -67,6 +63,8 @@ export default class HomePage extends Component {
 
   render() {
     return (
+      <div className = "center">   
+      <MuiThemeProvider theme={theme}>
       <Router>
         <Switch>
           <Route
@@ -90,6 +88,8 @@ export default class HomePage extends Component {
           />
         </Switch>
       </Router>
+      </MuiThemeProvider>
+      </div>
     );
   }
 }
