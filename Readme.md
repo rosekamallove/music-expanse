@@ -1,14 +1,14 @@
-
 ## Music Room
-Tired of arguing over music in a party or a gathering? 
 
-Here, make a _```virtual room```_ add people with the unique _```RoomID```_ and let the members of the room control the music through a _```voting system```_.
+Tired of arguing over music in a party or a gathering?
+
+Here, make a _`virtual room`_ add people with the unique _`RoomID`_ and let the members of the room control the music through a _`voting system`_.
 
 But Rose or whatever your name is, how does it work?
 
 It works like _Magic_
 
-Ok no, actually it uses the _```Spotify's Public API```_  So, log in and start partying, forget about all the work you have to get done and enjoy!
+Ok no, actually it uses the _`Spotify's Public API`_ So, log in and start partying, forget about all the work you have to get done and enjoy!
 </br></br></br>
 
 _Note: This is still under development and I [@rosekamallove](https://github.com/rosekamallove/) is the only developer, so the experience may not be the smoothest and new features maybe added_
@@ -18,28 +18,28 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 <hr>
 
 - ### Dependencies:
-    - [Python](https://www.python.org/downloads/):
 
-            pip install -r requirements.txt
+  - [Python](https://www.python.org/downloads/):
 
-    - [NodeJS](https://nodejs.org/en/download/):
+          pip install -r requirements.txt
 
-            cd ./frontend ; npm i
+  - [NodeJS](https://nodejs.org/en/download/):
 
-
+          cd ./frontend ; npm i
 
 </br>
 
-- ### To run the development server: 
+- ### To run the development server:
 
-    - Whenever you make a change to the database run the following command:
+  - Whenever you make a change to the database run the following command:
 
-            pyhton ./manage.py makemigrations
-            pyhton ./manage.py migrate
+          pyhton ./manage.py makemigrations
+          pyhton ./manage.py migrate
 
-    - To run the server run the following command:
-    
-            pyhton ./manage.py runserver
+  - To run the app create two instances of the terminal and run the following commands:
+
+          pyhton manage.py runserver
+          cd forntend ; npm run dev
 
 </br>
 <hr>
@@ -56,12 +56,12 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 - ### Node Packages
 
-    - _```babel```_ transpiles our code to work with all the different browsers.
-    - _```webpack```_ transpiles and bundles all of our javascript into a single file with no spaces hence, optimizing our code.
-    - _```material-ui```_ comes with pre written components so we don't have to style our webpage.
-    - _```babel/plugin-proposal-class-properties```_ so we can use Async and Await in JavaScript.
-    - _```react-router-dom```_ allows us to re-route pages
-    - _```material-ui/icons```_ allows us to use icons from the material ui.
+  - _`babel`_ transpiles our code to work with all the different browsers.
+  - _`webpack`_ transpiles and bundles all of our javascript into a single file with no spaces hence, optimizing our code.
+  - _`material-ui`_ comes with pre written components so we don't have to style our webpage.
+  - _`babel/plugin-proposal-class-properties`_ so we can use Async and Await in JavaScript.
+  - _`react-router-dom`_ allows us to re-route pages
+  - _`material-ui/icons`_ allows us to use icons from the material ui.
 
 ```json
 "devDependencies": {
@@ -81,10 +81,12 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
     "react-router-dom": "^5.2.0"
   }
 ```
+
 - ### Node Scripts:
 
-    - _```"dev"```_ : Runs the webpack in the develoment and watch mode (automaticaly rebundles everytime we make a change and save)
-    - _```"build"```_ : Builds the webpack in production mode.
+  - _`"dev"`_ : Runs the webpack in the develoment and watch mode (automaticaly rebundles everytime we make a change and save)
+  - _`"build"`_ : Builds the webpack in production mode.
+
 ```json
  "scripts": {
     "dev": "webpack --mode development --watch",
@@ -98,20 +100,18 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 ```json
 {
-    "presets": [
-        [
-            "@babel/preset-env",
-            {
-                "targets": {
-                    "node": "10"
-                }
-            }
-        ],
-        "@babel/preset-react"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "10"
+        }
+      }
     ],
-    "plugins": [
-        "@babel/plugin-proposal-class-properties"
-    ]
+    "@babel/preset-react"
+  ],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }
 ```
 
@@ -153,3 +153,4 @@ module.exports = {
     ],
 }
 `
+```

@@ -8,6 +8,8 @@ import StickyFooter from './TopBarAndFooter/Footer.js'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import UpdateIcon from '@material-ui/icons/Update';
 import Footer from "./TopBarAndFooter/Footer";
+import { Collapse } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 
 
 
@@ -25,12 +27,15 @@ export default class CreateRoomPage extends Component {
     super(props);
     this.state = {
       guestCanPause: this.props.guestCanPause,
-      votesToSkip: this.votesToSkip,
+      votesToSkip: this.props.votesToSkip,
+      errorMsg: "",
+      successMsg: "",
     };
 
     this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
     this.handleVotesChange = this.handleVotesChange.bind(this);
     this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
+    this.handleUpdateButtonPressed = this.handleUpdateButtonPressed.bind(this);
   }
 
   handleVotesChange(e) {
@@ -59,18 +64,28 @@ export default class CreateRoomPage extends Component {
       .then((data) => this.props.history.push("/room/" + data.code));
   }
 
-  handleUpdateButtonPressed() {
+   handleUpdateButtonPressed() {
     const requestOptions = {
-      method: "POST",
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         votes_to_skip: this.state.votesToSkip,
         guest_can_pause: this.state.guestCanPause,
+        code: this.props.roomCode,
       }),
     };
-    fetch("/api/create-room", requestOptions)
-      .then((response) => response.json())
-      .then((data) => this.props.history.push("/room/" + data.code));
+    fetch("/api/update-room", requestOptions).then((response) => {
+      if (response.ok) {
+        this.setState({
+          successMsg: "Room updated successfully!",
+        });
+      } else {
+        this.setState({
+          errorMsg: "Error updating room...",
+        });
+      }
+      this.props.updateCallback();
+    });
   }  
 
   renderCreateButtons () {
@@ -104,7 +119,7 @@ export default class CreateRoomPage extends Component {
       <Grid item xs={12} align="center">
             <Button 
 	            startIcon={<UpdateIcon/>}
-              onClick={this.handleRoomButtonPressed}
+              onClick={this.handleUpdateButtonPressed}
               color="primary" 
               variant="contained">
                 Update Room 
@@ -118,6 +133,28 @@ export default class CreateRoomPage extends Component {
     return (
           <Grid container spacing={1}>
             <Grid item xs={12} align="center">     
+              <Collapse in={this.state.errorMsg != "" || this.state.successMsg != ""}>
+                {this.state.successMsg != "" ? (
+                <Alert 
+                  severity="success" 
+                  onClose={()=>{
+                    this.setState({successMsg: ""});}
+                  }>
+                    {this.state.successMsg}
+                </Alert>
+                ) : (
+                <Alert
+                  severity="error"
+                  onClose={()=>{
+                    this.setState({errorMsg: ""});
+                  }}
+                >
+                  {this.state.errorMsg}
+                </Alert>
+                )}
+              </Collapse>
+            </Grid>
+            <Grid item xs={12} align="center">     
               <Typography component='h4' variant="h4">
                 {title} 
               </Typography>
@@ -128,7 +165,7 @@ export default class CreateRoomPage extends Component {
                   <div align='center'>
                     Guest Control of Playback State
                   </div>
-                    <RadioGroup row defaultValue='true' onChange={this.handleGuestCanPauseChange}>
+                    <RadioGroup row defaultValue={this.props.guestCanPause.toString()} onChange={this.handleGuestCanPauseChange}>
                       <FormControlLabel
                         value="true" 
                         control={<Radio color="primary"/>}
