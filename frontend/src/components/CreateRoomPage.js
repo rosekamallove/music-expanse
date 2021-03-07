@@ -77,11 +77,11 @@ export default class CreateRoomPage extends Component {
     fetch("/api/update-room", requestOptions).then((response) => {
       if (response.ok) {
         this.setState({
-          successMsg: "Room updated successfully!",
+          successMsg: "Expanse updated successfully!",
         });
       } else {
         this.setState({
-          errorMsg: "Error updating room...",
+          errorMsg: "Error updating expanse...",
         });
       }
       this.props.updateCallback();
@@ -122,14 +122,14 @@ export default class CreateRoomPage extends Component {
               onClick={this.handleUpdateButtonPressed}
               color="primary" 
               variant="contained">
-                Update Room 
+                Update Expanse 
             </Button>
           </Grid>
     );
   }
 
   render() {
-    const title = this.props.update ? "Update Room" : "Create a Room";
+    const title = this.props.update ? "Update Expanse" : "Create an Expanse";
     return (
           <Grid container spacing={1}>
             <Grid item xs={12} align="center">     

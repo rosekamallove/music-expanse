@@ -140,7 +140,7 @@ export default class Room extends Component {
             startIcon={<ExitToAppIcon/>}
             onClick={this.leaveButtonPressed}
           >
-            Leave Room
+            Leave Expanse
           </Button>
         </Grid>
       </Grid> 

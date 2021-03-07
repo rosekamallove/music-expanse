@@ -38,16 +38,16 @@ export default class HomePage extends Component {
       <Grid container spacing={3}>
         <Grid item xs={12} align="center">
           <Typography variant="h3" compact="h3">
-            Music Rooms 
+            Music Expanse 
           </Typography>
         </Grid>
         <Grid item xs={12} align="center">
           <ButtonGroup disableElevation variant="contained" color="primary">
             <Button color="primary" to="/join" component={Link} startIcon={<PersonAddIcon/>}>
-              Join a Room
+              Join a Expanse
             </Button>
             <Button color="secondary" to="/create" component={Link} startIcon={<AddCircleIcon/>}>
-              Create a Room
+              Create a Expanse 
             </Button>
           </ButtonGroup>
         </Grid>

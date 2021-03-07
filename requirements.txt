@@ -1,2 +1,6 @@
 django
+Django
 djangorestframework
+gunicorn
+whitenoise
+
