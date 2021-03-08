@@ -3,4 +3,5 @@ Django
 djangorestframework
 gunicorn
 whitenoise
+requests
 
