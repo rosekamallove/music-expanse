@@ -3,7 +3,7 @@ This file stores all the urls local to this app.
 """
 
 from django.urls import path
-from .views import RoomView, CreateRoomView, GetRoom, JoinRoom, UpdateRoom, UserInRoom, LeaveRoom, UpdateRoom
+from .views import RoomView, CreateRoomView, GetRoom, JoinRoom, UserInRoom, LeaveRoom, UpdateRoom
 
 urlpatterns = [
     path('room', RoomView.as_view()),
