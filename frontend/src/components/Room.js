@@ -168,7 +168,7 @@ export default class Room extends Component {
             color="secondary"
             onClick={this.leaveButtonPressed}
           >
-            Leave Room
+            Leave Expanse
           </Button>
         </Grid>
       </Grid>
