@@ -29,7 +29,7 @@ export default function Info(Props) {
                 </Typography>
             </Grid>
             <Grid item xs={12} align="center">
-                <Typography variant="body1">
+                <Typography variant="body1" align="center">
                     {page === pages.JOIN? joinInfo() : createInfo()}
                 </Typography>
             </Grid>
