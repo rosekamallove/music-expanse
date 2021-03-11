@@ -59,4 +59,4 @@ var colors = new Array(
     }
   }
   
-  setInterval(updateGradient,10);
+  setInterval(updateGradient,8);

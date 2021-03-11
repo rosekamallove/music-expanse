@@ -4,6 +4,7 @@ import CreateRoomPage from "./CreateRoomPage";
 import Room from "./Room";
 import { Grid, Button, ButtonGroup, Typography, MuiThemeProvider } from "@material-ui/core";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import InfoIcon from '@material-ui/icons/Info';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import theme from './Theme/normal'
 import {
@@ -13,6 +14,8 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+
+import Info from './InfoPage';
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -45,6 +48,9 @@ export default class HomePage extends Component {
           <ButtonGroup disableElevation variant="contained" color="primary">
             <Button color="primary" to="/join" component={Link} startIcon={<PersonAddIcon/>}>
               Join a Expanse
+            </Button>
+            <Button color="default" to="/info" component={Link} startIcon={<InfoIcon/>}>
+              Info 
             </Button>
             <Button color="secondary" to="/create" component={Link} startIcon={<AddCircleIcon/>}>
               Create a Expanse 
@@ -79,6 +85,7 @@ export default class HomePage extends Component {
             }}
           />
           <Route path="/join" component={RoomJoinPage} />
+          <Route path='/info' component={Info}/>
           <Route path="/create" component={CreateRoomPage} />
           <Route
             path="/room/:roomCode"
