@@ -4,13 +4,18 @@ Tired of arguing over music in a party or a gathering?
 
 Here, make a [_`virtual room`_](https://music-expanse.herokuapp.com/create) add people with the unique _`RoomID`_ and let the members of the room control the music through a _`voting system`_.
 
-> </br>
+But Rose or whatever your name is, how does it work?
 
-# This is the Development Branch Of the Project
+It works like _Magic_
 
-- ## Tasks:
+Ok no, actually it uses the _`Spotify's Public API`_ So, log in and start partying, forget about all the work you have to get done and enjoy!
+</br></br></br>
 
-  - [x] (Deploy it to a different development url on Heroku)
+_Note: This is still under development and I [@rosekamallove](https://github.com/rosekamallove/) is the only developer, so the experience may not be the smoothest and new features maybe added_
+
+</br>
+
+<hr>
 
 - ### Dependencies:
 
@@ -37,6 +42,30 @@ Here, make a [_`virtual room`_](https://music-expanse.herokuapp.com/create) add 
           python ./manage.py migrate
 
 </br>
+<hr>
+
+- ## How To Use?
+
+  - Creating a Expanse:
+
+    - Click on `Create Expanse`
+    - _Authenticate to Spotify if this is your first time_
+    - Select if you want the members to have control over the music
+    - Enter the number of votes you want the song to get skipped after
+    - Now share the `Room Code` to add members to the Expanse
+    - _If you don't see any song playing it is because there is no song playing on your spotify_
+
+  - Joining a Already Created Expanse
+
+    - Ask the host for the expanse's code
+    - Click on Join Expanse and enter the code
+    - Click on Enter Expanse
+
+  - Changing Votes To Skip or the members's control over the music(_You have to be the host_):
+    - Click on the settings button
+    - Change what you want to change
+    - Click on Update Expanse and then Close
+
 <hr>
 
 ### ColorScheme:
