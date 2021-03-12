@@ -2,20 +2,15 @@
 
 Tired of arguing over music in a party or a gathering?
 
-Here, make a _`virtual room`_ add people with the unique _`RoomID`_ and let the members of the room control the music through a _`voting system`_.
+Here, make a [_`virtual room`_](https://music-expanse.herokuapp.com/create) add people with the unique _`RoomID`_ and let the members of the room control the music through a _`voting system`_.
 
-But Rose or whatever your name is, how does it work?
+> </br>
 
-It works like _Magic_
+# This is the Development Branch Of the Project
 
-Ok no, actually it uses the _`Spotify's Public API`_ So, log in and start partying, forget about all the work you have to get done and enjoy!
-</br></br></br>
+- ## Tasks:
 
-_Note: This is still under development and I [@rosekamallove](https://github.com/rosekamallove/) is the only developer, so the experience may not be the smoothest and new features maybe added_
-
-</br>
-
-<hr>
+  - [x] (Deploy it to a different development url on Heroku)
 
 - ### Dependencies:
 
@@ -92,65 +87,4 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production "
   },
-```
-
-</br>
-
-### Babel Config (sets up the babel loader):
-
-```json
-{
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "10"
-        }
-      }
-    ],
-    "@babel/preset-react"
-  ],
-  "plugins": ["@babel/plugin-proposal-class-properties"]
-}
-```
-
-</br>
-
-### Webpack Config (Bundles all of JavaScript into one single file):
-
-```javascript
-const path = require("path");
-const webpack = require("webpack");
-
-module.exports = {
-    entry: "./src/index.js",
-    output: {
-        path: path.resolve(__dirname, "./static/frontend"),
-        filename: "[name].js",
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                },
-            },
-        ],
-    },
-    optimization: {
-        minimize: true,
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            "process.env": {
-                // This has effect on the react lib size
-                NODE_ENV: JSON.stringify("production"),
-            },
-        }),
-    ],
-}
-`
 ```
