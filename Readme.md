@@ -17,6 +17,30 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 <hr>
 
+- ## How To Use?
+
+  - Creating a Expanse:
+
+    - Click on `Create Expanse`
+    - _Authenticate to Spotify if this is your first time_
+    - Select if you want the members to have control over the music
+    - Enter the number of votes you want the song to get skipped after
+    - Now share the `Room Code` to add members to the Expanse
+    - _If you don't see any song playing it is because there is no song playing on your spotify_
+
+  - Joining a Already Created Expanse
+
+    - Ask the host for the expanse's code
+    - Click on Join Expanse and enter the code
+    - Click on Enter Expanse
+
+  - Changing Votes To Skip or the members's control over the music(_You have to be the host_):
+    - Click on the settings button
+    - Change what you want to change
+    - Click on Update Expanse and then Close
+
+<hr>
+
 - ### Dependencies:
 
   - [Python](https://www.python.org/downloads/):
@@ -42,30 +66,6 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
           python ./manage.py migrate
 
 </br>
-<hr>
-
-- ## How To Use?
-
-  - Creating a Expanse:
-
-    - Click on `Create Expanse`
-    - _Authenticate to Spotify if this is your first time_
-    - Select if you want the members to have control over the music
-    - Enter the number of votes you want the song to get skipped after
-    - Now share the `Room Code` to add members to the Expanse
-    - _If you don't see any song playing it is because there is no song playing on your spotify_
-
-  - Joining a Already Created Expanse
-
-    - Ask the host for the expanse's code
-    - Click on Join Expanse and enter the code
-    - Click on Enter Expanse
-
-  - Changing Votes To Skip or the members's control over the music(_You have to be the host_):
-    - Click on the settings button
-    - Change what you want to change
-    - Click on Update Expanse and then Close
-
 <hr>
 
 ### ColorScheme:
