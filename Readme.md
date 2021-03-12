@@ -19,7 +19,7 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 # This is the Development Branch:
 
-- ## Tasks:
+## Tasks:
 
 - [x] (Update the ReadMe)
 - [] (Make the code more Readable)
