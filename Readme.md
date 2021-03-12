@@ -21,14 +21,14 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 - ## Tasks:
 
-  - [x] (Update the ReadMe)
-  - [] (Make the code more Readable)
-  - [] (Get rid of all the Jugaad Positioning and implement proper positioning)
-  - [] (Create the App Bar (linked to all the pages) with LogIn and LogOut)
-  - [] (Implement LogIn and LogOut)
-  - [] (Create the Theme Switcher and Create Multiple themes)
-  - [] (Look for audio output from Spotify and Implement it)
-  - [] (Create the Footer)
+- [x] (Update the ReadMe)
+- [] (Make the code more Readable)
+- [] (Get rid of all the Jugaad Positioning and implement proper positioning)
+- [] (Create the App Bar (linked to all the pages) with LogIn and LogOut)
+- [] (Implement LogIn and LogOut)
+- [] (Create the Theme Switcher and Create Multiple themes)
+- [] (Look for audio output from Spotify and Implement it)
+- [] (Create the Footer)
 
 - ### Dependencies:
 
