@@ -41,6 +41,25 @@ _Note: This is still under development and I [@rosekamallove](https://github.com
 
 <hr>
 
+- ## Here are the Demos:
+
+  - ### Creating an Expanse:
+
+    ![createExpanse](frontend/static/images/CreateRoom.gif)
+
+<hr>
+
+- ### Joining an Expanse:
+
+  ![createExpanse](frontend/static/images/JoiningRoom.gif)
+
+<hr>
+
+- ### Updating an Expanse (_As a Host_):
+
+  ![createExpanse](frontend/static/images/UpdatingRoom.gif)
+  <hr>
+
 - ### Dependencies:
 
   - [Python](https://www.python.org/downloads/):
