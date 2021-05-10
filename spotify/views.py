@@ -80,7 +80,7 @@ class CurrentSong(APIView):
         song_id = item.get('id')
 
         artist_string = ""
-
+        # For if the artist string have multiple strings in it.
         for i, artist in enumerate(item.get('artists')):
             if i > 0:
                 artist_string += ", "

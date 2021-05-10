@@ -4,6 +4,7 @@ import { Grid, Button, Typography, MuiThemeProvider } from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle;
 import CancelIcon from "@material-ui/icons/Cancel";
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import theme from "./Theme/normal";
