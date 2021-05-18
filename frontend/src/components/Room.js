@@ -20,13 +20,6 @@ export default class Room extends Component {
       song: {},
     };
     this.roomCode = this.props.match.params.roomCode;
-    this.leaveButtonPressed = this.leaveButtonPressed.bind(this);
-    this.updateShowSettings = this.updateShowSettings.bind(this);
-    this.renderSettingsButton = this.renderSettingsButton.bind(this);
-    this.renderSettings = this.renderSettings.bind(this);
-    //this.getRoomDetails = this.getRoomDetails.bind(this);
-    this.authenticateSpotify = this.authenticateSpotify.bind(this);
-    this.getCurrentSong = this.getCurrentSong.bind(this);
     this.getRoomDetails();
   }
 
@@ -34,9 +27,9 @@ export default class Room extends Component {
     this.interval = setInterval(this.getCurrentSong, 1000);
   };
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     clearInterval(this.interval);
-  }
+  };
 
   getRoomDetails = async () => {
     const response = await fetch(`/api/get-room?code=${this.roomCode}`);
