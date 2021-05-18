@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { TextField, Button, Grid, Typography, MuiThemeProvider } from '@material-ui/core';
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import {
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  MuiThemeProvider,
+} from "@material-ui/core";
 import { Link } from "react-router-dom";
-import theme from './Theme/normal';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import CodeIcon from '@material-ui/icons/Code';
-
+import theme from "./Theme/normal";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import CodeIcon from "@material-ui/icons/Code";
 
 export default class RoomJoinPage extends Component {
   constructor(props) {
@@ -37,11 +42,11 @@ export default class RoomJoinPage extends Component {
             variant="outlined"
             onChange={this.handleTextFieldChange}
             InputProps={{
-                startAdornment: (
-                    <InputAdornment position="start">
-                        <CodeIcon/>
-                    </InputAdornment>
-                ),
+              startAdornment: (
+                <InputAdornment position="start">
+                  <CodeIcon />
+                </InputAdornment>
+              ),
             }}
           />
         </Grid>
@@ -50,13 +55,19 @@ export default class RoomJoinPage extends Component {
             variant="contained"
             color="primary"
             onClick={this.roomButtonPressed}
-            startIcon={<CheckCircleIcon/>}
+            startIcon={<CheckCircleIcon />}
           >
             Enter Room
           </Button>
         </Grid>
         <Grid item xs={12} align="center">
-          <Button variant="contained" color="secondary" to="/" component={Link} startIcon={<ArrowBackIosIcon/>}>
+          <Button
+            variant="contained"
+            color="secondary"
+            to="/"
+            component={Link}
+            startIcon={<ArrowBackIosIcon />}
+          >
             Back
           </Button>
         </Grid>

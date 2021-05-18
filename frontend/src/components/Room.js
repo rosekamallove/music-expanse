@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {Grid, Button, Typography, MuiThemeProvider} from '@material-ui/core';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
-import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
-import theme from './Theme/normal';
-import CreateRoomPage from './CreateRoomPage';
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Grid, Button, Typography, MuiThemeProvider } from "@material-ui/core";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import CancelIcon from "@material-ui/icons/Cancel";
+import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
+import theme from "./Theme/normal";
+import CreateRoomPage from "./CreateRoomPage";
 import MusicPlayer from "./MusicPlayer";
 
 export default class Room extends Component {
@@ -121,7 +121,7 @@ export default class Room extends Component {
         </Grid>
         <Grid item xs={12} align="center">
           <Button
-            startIcon={<CancelIcon/>}
+            startIcon={<CancelIcon />}
             variant="contained"
             color="secondary"
             onClick={() => this.updateShowSettings(false)}
@@ -137,7 +137,7 @@ export default class Room extends Component {
     return (
       <Grid item xs={12} align="center">
         <Button
-          startIcon={<SettingsApplicationsIcon/>}
+          startIcon={<SettingsApplicationsIcon />}
           variant="contained"
           color="primary"
           onClick={() => this.updateShowSettings(true)}
@@ -163,7 +163,7 @@ export default class Room extends Component {
         {this.state.isHost ? this.renderSettingsButton() : null}
         <Grid item xs={12} align="center">
           <Button
-            startIcon={<ExitToAppIcon/>}
+            startIcon={<ExitToAppIcon />}
             variant="contained"
             color="secondary"
             onClick={this.leaveButtonPressed}
