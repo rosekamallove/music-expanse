@@ -32,7 +32,7 @@ export default class HomePage extends Component {
     this.clearRoomCode = this.clearRoomCode.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount = () => {
     fetch("/api/user-in-room")
       .then((response) => response.json())
       .then((data) => {
@@ -40,9 +40,9 @@ export default class HomePage extends Component {
           roomCode: data.code,
         });
       });
-  }
+  };
 
-  renderHomePage() {
+  renderHomePage = () => {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} align="center">
@@ -80,13 +80,13 @@ export default class HomePage extends Component {
         </Grid>
       </Grid>
     );
-  }
+  };
 
-  clearRoomCode() {
+  clearRoomCode = () => {
     this.setState({
       roomCode: null,
     });
-  }
+  };
 
   render() {
     return (
