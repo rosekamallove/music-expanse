@@ -3,7 +3,7 @@
 - ## Tasks:
 
   - [x] Update the ReadMe
-  - [ ] Change all the regular Functions in react to Lambda function `(the "this" keyword)`
+  - [X] Change all the regular Functions in react to Lambda function `(because of the "this" keyword)`
   - [ ] Get rid of all the "just works" Positioning and implement proper positioning
   - [ ] Create the App Bar (linked to all the pages) with LogIn and LogOut
   - [ ] Create the Footer
