@@ -5,6 +5,8 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import CreateRoomPage from "./CreateRoomPage";
 import MusicPlayer from "./MusicPlayer";
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
 
 export default class Room extends Component {
   constructor(props) {
@@ -53,7 +55,7 @@ export default class Room extends Component {
     }
   };
 
-  authenticateSpotify() {
+  authenticateSpotify = () => {
     fetch("/spotify/is-authenticated")
       .then((response) => response.json())
       .then((data) => {
@@ -67,9 +69,9 @@ export default class Room extends Component {
             });
         }
       });
-  }
+  };
 
-  getCurrentSong() {
+  getCurrentSong = () => {
     fetch("/spotify/current-song")
       .then((response) => {
         if (!response.ok) {
@@ -80,11 +82,11 @@ export default class Room extends Component {
       })
       .then((data) => {
         this.setState({ song: data });
-        console.log(data);
+        //console.log(data);
       });
-  }
+  };
 
-  leaveButtonPressed() {
+  leaveButtonPressed = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -93,15 +95,15 @@ export default class Room extends Component {
       this.props.leaveRoomCallback();
       this.props.history.push("/");
     });
-  }
+  };
 
-  updateShowSettings(value) {
+  updateShowSettings = (value) => {
     this.setState({
       showSettings: value,
     });
-  }
+  };
 
-  renderSettings() {
+  renderSettings = () => {
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
@@ -125,9 +127,9 @@ export default class Room extends Component {
         </Grid>
       </Grid>
     );
-  }
+  };
 
-  renderSettingsButton() {
+  renderSettingsButton = () => {
     return (
       <Grid item xs={12} align="center">
         <Button
@@ -140,7 +142,7 @@ export default class Room extends Component {
         </Button>
       </Grid>
     );
-  }
+  };
 
   render() {
     if (this.state.showSettings) {
@@ -149,9 +151,13 @@ export default class Room extends Component {
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
-          <Typography variant="h4" component="h4">
-            Code: {this.roomCode}
-          </Typography>
+          <Chip
+            color="primary"
+            avatar={
+              <Avatar src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/code-512.png" />
+            }
+            label={this.roomCode}
+          />
         </Grid>
         <MusicPlayer {...this.state.song} />
         {this.state.isHost ? this.renderSettingsButton() : null}
