@@ -34,26 +34,21 @@ export default class CreateRoomPage extends Component {
       errorMsg: "",
       successMsg: "",
     };
-
-    this.handleRoomButtonPressed = this.handleRoomButtonPressed.bind(this);
-    this.handleVotesChange = this.handleVotesChange.bind(this);
-    this.handleGuestCanPauseChange = this.handleGuestCanPauseChange.bind(this);
-    this.handleUpdateButtonPressed = this.handleUpdateButtonPressed.bind(this);
   }
 
-  handleVotesChange(e) {
+  handleVotesChange = (e) => {
     this.setState({
       votesToSkip: e.target.value,
     });
-  }
+  };
 
-  handleGuestCanPauseChange(e) {
+  handleGuestCanPauseChange = (e) => {
     this.setState({
       guestCanPause: e.target.value === "true" ? true : false,
     });
-  }
+  };
 
-  handleRoomButtonPressed() {
+  handleRoomButtonPressed = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -65,9 +60,9 @@ export default class CreateRoomPage extends Component {
     fetch("/api/create-room", requestOptions)
       .then((response) => response.json())
       .then((data) => this.props.history.push("/room/" + data.code));
-  }
+  };
 
-  handleUpdateButtonPressed() {
+  handleUpdateButtonPressed = () => {
     const requestOptions = {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -89,9 +84,9 @@ export default class CreateRoomPage extends Component {
       }
       this.props.updateCallback();
     });
-  }
+  };
 
-  renderCreateButtons() {
+  renderCreateButtons = () => {
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
@@ -117,9 +112,9 @@ export default class CreateRoomPage extends Component {
         </Grid>
       </Grid>
     );
-  }
+  };
 
-  renderUpdateButtons() {
+  renderUpdateButtons = () => {
     return (
       <Grid item xs={12} align="center">
         <Button
@@ -132,7 +127,7 @@ export default class CreateRoomPage extends Component {
         </Button>
       </Grid>
     );
-  }
+  };
 
   render() {
     const title = this.props.update ? "Update Expanse" : "Create an Expanse";
