@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Grid, Button, Typography, MuiThemeProvider } from "@material-ui/core";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { Grid, Button, Typography } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
-import theme from "./Theme/normal";
 import CreateRoomPage from "./CreateRoomPage";
 import MusicPlayer from "./MusicPlayer";
 
@@ -39,7 +37,7 @@ export default class Room extends Component {
   }
 
   getRoomDetails() {
-    return fetch("/api/get-room" + "?code=" + this.roomCode)
+    return fetch(`/api/get-room?code=${this.roomCode}`)
       .then((response) => {
         if (!response.ok) {
           this.props.leaveRoomCallback();
