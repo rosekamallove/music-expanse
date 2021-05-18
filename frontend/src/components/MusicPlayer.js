@@ -15,28 +15,28 @@ export default class MusicPlayer extends Component {
     super(props);
   }
 
-  skipSong() {
+  skipSong = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     };
     fetch("/spotify/skip", requestOptions);
-  }
+  };
 
-  pauseSong() {
+  pauseSong = () => {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
     fetch("/spotify/pause", requestOptions);
-  }
-  playSong() {
+  };
+  playSong = () => {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
     fetch("/spotify/play", requestOptions);
-  }
+  };
 
   render() {
     const songProgress = (this.props.time / this.props.duration) * 100;

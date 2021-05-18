@@ -13,12 +13,12 @@ const pages = {
 export default function Info(Props) {
   const [page, setPage] = useState(pages.JOIN);
 
-  function joinInfo() {
-    return "Tired of arguing over music at a party or a gathering? Here, make a virtual room add people with the unique RoomID, and let the members of the room control the music through a voting system.";
-  }
-  function createInfo() {
+  const joinInfo = () => {
+    return `Tired of arguing over music at a party or a gathering? Here, make a virtual room add people with the unique RoomID, and let the members of the room control the music through a voting system.`;
+  };
+  const createInfo = () => {
     return "Create an Expanse, LogIn to spotify, Share the code and add members!";
-  }
+  };
 
   return (
     <Grid container spacing={1}>
