@@ -23,12 +23,12 @@ export default function Info(Props) {
   return (
     <Grid container spacing={1}>
       <Grid item cs={12} align="center">
-        <Typography component="h4" variant="h4">
+        <Typography component="h4" variant="h4" align="center">
           What is Music Expanse?
         </Typography>
       </Grid>
-      <Grid item xs={12} align="center">
-        <Typography variant="body1" align="center">
+      <Grid item xs={12} align="left">
+        <Typography variant="body1" align="left">
           {page === pages.JOIN ? joinInfo() : createInfo()}
         </Typography>
       </Grid>
