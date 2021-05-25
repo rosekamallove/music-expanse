@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import HomePage from "./HomePage";
-
-//Setting up a class in react:
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +8,7 @@ export default class App extends Component {
   }
 
   render() {
-    return <HomePage />; //embedding javascript code into the the return statement
+    return <HomePage />;
   }
 }
 

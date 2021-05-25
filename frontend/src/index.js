@@ -69,5 +69,4 @@ function updateGradient() {
       colors.length;
   }
 }
-
 setInterval(updateGradient, 8);
