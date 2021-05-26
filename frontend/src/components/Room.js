@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Grid, Button, Typography, MuiThemeProvider } from "@material-ui/core";
-import Avatar from "@material-ui/core/Avatar";
-import Chip from "@material-ui/core/Chip";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { Grid, Button, Typography } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
-import theme from "./Theme/normal";
 import CreateRoomPage from "./CreateRoomPage";
 import MusicPlayer from "./MusicPlayer";
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
 
 export default class Room extends Component {
   constructor(props) {
@@ -22,46 +20,35 @@ export default class Room extends Component {
       song: {},
     };
     this.roomCode = this.props.match.params.roomCode;
-    this.leaveButtonPressed = this.leaveButtonPressed.bind(this);
-    this.updateShowSettings = this.updateShowSettings.bind(this);
-    this.renderSettingsButton = this.renderSettingsButton.bind(this);
-    this.renderSettings = this.renderSettings.bind(this);
-    this.getRoomDetails = this.getRoomDetails.bind(this);
-    this.authenticateSpotify = this.authenticateSpotify.bind(this);
-    this.getCurrentSong = this.getCurrentSong.bind(this);
     this.getRoomDetails();
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.interval = setInterval(this.getCurrentSong, 1000);
-  }
+  };
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     clearInterval(this.interval);
-  }
+  };
 
-  getRoomDetails() {
-    return fetch("/api/get-room" + "?code=" + this.roomCode)
-      .then((response) => {
-        if (!response.ok) {
-          this.props.leaveRoomCallback();
-          this.props.history.push("/");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          votesToSkip: data.votes_to_skip,
-          guestCanPause: data.guest_can_pause,
-          isHost: data.is_host,
-        });
-        if (this.state.isHost) {
-          this.authenticateSpotify();
-        }
-      });
-  }
+  getRoomDetails = async () => {
+    const response = await fetch(`/api/get-room?code=${this.roomCode}`);
+    if (!response.ok) {
+      this.props.leaveRoomCallback();
+      this.props.history.push("/");
+    }
+    const data = await response.json();
+    this.setState({
+      votesToSkip: data.votes_to_skip,
+      guestCanPause: data.guest_can_pause,
+      isHost: data.is_host,
+    });
+    if (this.state.isHost) {
+      this.authenticateSpotify();
+    }
+  };
 
-  authenticateSpotify() {
+  authenticateSpotify = () => {
     fetch("/spotify/is-authenticated")
       .then((response) => response.json())
       .then((data) => {
@@ -75,9 +62,9 @@ export default class Room extends Component {
             });
         }
       });
-  }
+  };
 
-  getCurrentSong() {
+  getCurrentSong = () => {
     fetch("/spotify/current-song")
       .then((response) => {
         if (!response.ok) {
@@ -88,11 +75,11 @@ export default class Room extends Component {
       })
       .then((data) => {
         this.setState({ song: data });
-        console.log(data);
+        //console.log(data);
       });
-  }
+  };
 
-  leaveButtonPressed() {
+  leaveButtonPressed = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -101,15 +88,15 @@ export default class Room extends Component {
       this.props.leaveRoomCallback();
       this.props.history.push("/");
     });
-  }
+  };
 
-  updateShowSettings(value) {
+  updateShowSettings = (value) => {
     this.setState({
       showSettings: value,
     });
-  }
+  };
 
-  renderSettings() {
+  renderSettings = () => {
     return (
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
@@ -133,9 +120,9 @@ export default class Room extends Component {
         </Grid>
       </Grid>
     );
-  }
+  };
 
-  renderSettingsButton() {
+  renderSettingsButton = () => {
     return (
       <Grid item xs={12} align="center">
         <Button
@@ -148,7 +135,7 @@ export default class Room extends Component {
         </Button>
       </Grid>
     );
-  }
+  };
 
   render() {
     if (this.state.showSettings) {
@@ -181,3 +168,12 @@ export default class Room extends Component {
     );
   }
 }
+MusicPlayer.defaultProps = {
+  title: "No Song Playing",
+  votes: "2",
+  votes_required: "3",
+  songProgress: "25",
+  artist: "Rosek",
+  image_url:
+    "http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png",
+};

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RoomJoinPage from "./RoomJoinPage";
 import CreateRoomPage from "./CreateRoomPage";
+import HomePageTypography from "./HomePageTypography";
 import Room from "./Room";
 import {
   Grid,
@@ -32,7 +33,7 @@ export default class HomePage extends Component {
     this.clearRoomCode = this.clearRoomCode.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount = () => {
     fetch("/api/user-in-room")
       .then((response) => response.json())
       .then((data) => {
@@ -40,15 +41,13 @@ export default class HomePage extends Component {
           roomCode: data.code,
         });
       });
-  }
+  };
 
-  renderHomePage() {
+  renderHomePage = () => {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12} align="center">
-          <Typography variant="h3" compact="h3">
-            Music Expanse
-          </Typography>
+          <HomePageTypography />
         </Grid>
         <Grid item xs={12} align="center">
           <ButtonGroup disableElevation variant="contained" color="primary">
@@ -80,13 +79,13 @@ export default class HomePage extends Component {
         </Grid>
       </Grid>
     );
-  }
+  };
 
-  clearRoomCode() {
+  clearRoomCode = () => {
     this.setState({
       roomCode: null,
     });
-  }
+  };
 
   render() {
     return (
