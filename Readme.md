@@ -1,19 +1,4 @@
-## This is the Development Branch:
-
-- ## Tasks:
-
-  - [x] Update the ReadMe
-  - [X] Change all the regular Functions in react to Lambda function `(because of the "this" keyword)`
-  - [ ] Get rid of all the "just works" Positioning and implement proper positioning
-  - [ ] Create the App Bar (linked to all the pages) with LogIn and LogOut
-  - [ ] Create the Footer
-  - [ ] Implement LogIn and LogOut
-  - [ ] Create the Theme Switcher and Create Multiple themes
-  - [ ] Look for audio output from Spotify and Implement it
-
-<br>
-
-# Music Room
+## Music Room
 
 Tired of arguing over music in a party or a gathering?
 
@@ -28,7 +13,7 @@ Ok no, actually it uses the _`Spotify's Public API`_ So, log in and start partyi
 
 _Note: This is still under development and I [@rosekamallove](https://github.com/rosekamallove/) is the only developer, so the experience may not be the smoothest and new features maybe added_
 
-#### _Want to Contribute? checkout the [`dev`](https://github.com/rosekamallove/musicRooms/tree/dev) branch!_
+#### _Want to Contribute? checkout the ```[dev](https://github.com/rosekamallove/musicRooms/tree/dev)``` branch!_
 
 </br>
 
