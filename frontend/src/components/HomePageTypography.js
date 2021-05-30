@@ -48,14 +48,17 @@ export default function SimpleCard() {
             Tired of arguing over music in a party or a gathering?
           </Typography>
           <Typography variant="body2" component="p">
-            Here, make a virtual room and let the members of the room control
-            the music through a voting system. <br />
+            Tired of arguing over music at a party or a gathering? Here, make a
+            virtual room add people with the unique RoomID, and let the members
+            of the room control the music through a voting system. <br />
             <Typography variant="body2" component="p">
               It works
               {bull}Like{bull}Magic{bull}
+              Ok no, actually it uses the Spotify's Public API.
             </Typography>
             <Typography variant="h7" component="h7">
-              So, LogIn and phase-out of the world.
+              So, log in and start partying, forget about all the work you have
+              to get done and enjoy!
             </Typography>
           </Typography>
         </CardContent>

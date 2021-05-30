@@ -3,13 +3,7 @@ import RoomJoinPage from "./RoomJoinPage";
 import CreateRoomPage from "./CreateRoomPage";
 import HomePageTypography from "./HomePageTypography";
 import Room from "./Room";
-import {
-  Grid,
-  Button,
-  ButtonGroup,
-  Typography,
-  MuiThemeProvider,
-} from "@material-ui/core";
+import { Grid, Button, ButtonGroup, MuiThemeProvider } from "@material-ui/core";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import InfoIcon from "@material-ui/icons/Info";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";

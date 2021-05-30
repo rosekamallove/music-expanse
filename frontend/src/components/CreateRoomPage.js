@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { render } from "react-dom";
+import { MuiThemeProvider } from "@material-ui/core";
 import {
   Grid,
   Button,
@@ -11,6 +13,7 @@ import {
   FormControlLabel,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import theme from "./Theme/normal";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import UpdateIcon from "@material-ui/icons/Update";

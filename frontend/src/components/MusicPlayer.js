@@ -74,3 +74,12 @@ export default class MusicPlayer extends Component {
     );
   }
 }
+MusicPlayer.defaultProps = {
+  title: "No Song Playing",
+  votes: "2",
+  votes_required: "3",
+  songProgress: "25",
+  artist: "Rosek",
+  image_url:
+    "http://www.scottishculture.org/themes/scottishculture/images/music_placeholder.png",
+};
