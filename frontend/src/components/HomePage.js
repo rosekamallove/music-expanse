@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RoomJoinPage from "./RoomJoinPage";
 import CreateRoomPage from "./CreateRoomPage";
+import Info from "./InfoPage";
 import HomePageTypography from "./HomePageTypography";
 import Room from "./Room";
 import {
@@ -21,8 +22,6 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
-
-import Info from "./InfoPage";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -50,7 +49,7 @@ export default class HomePage extends Component {
           <HomePageTypography />
         </Grid>
         <Grid item xs={12} align="center">
-          <ButtonGroup disableElevation variant="contained" color="primary">
+          <ButtonGroup variant="contained" color="primary">
             <Button
               color="primary"
               to="/join"
@@ -87,6 +86,19 @@ export default class HomePage extends Component {
     });
   };
 
+  roomExistandUserAllowed = () => {
+    if (
+      this.state.roomCode &&
+      confirm(
+        "A room you created already exist! Do you wanna be redirected to it?"
+      )
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   render() {
     return (
       <div className="center">
@@ -97,7 +109,7 @@ export default class HomePage extends Component {
                 exact
                 path="/"
                 render={() => {
-                  return this.state.roomCode ? (
+                  return this.roomExistandUserAllowed() ? (
                     <Redirect to={`/room/${this.state.roomCode}`} />
                   ) : (
                     this.renderHomePage()

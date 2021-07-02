@@ -22,6 +22,33 @@ export default class RoomJoinPage extends Component {
     };
   }
 
+  handleTextFieldChange = (e) => {
+    this.setState({
+      roomCode: e.target.value,
+    });
+  };
+
+  roomButtonPressed = () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        code: this.state.roomCode,
+      }),
+    };
+    fetch("/api/join-room", requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          this.props.history.push(`/room/${this.state.roomCode}`);
+        } else {
+          this.setState({ error: "Room not found." });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
     return (
       <Grid container spacing={1}>
@@ -72,31 +99,4 @@ export default class RoomJoinPage extends Component {
       </Grid>
     );
   }
-
-  handleTextFieldChange = (e) => {
-    this.setState({
-      roomCode: e.target.value,
-    });
-  };
-
-  roomButtonPressed = () => {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        code: this.state.roomCode,
-      }),
-    };
-    fetch("/api/join-room", requestOptions)
-      .then((response) => {
-        if (response.ok) {
-          this.props.history.push(`/room/${this.state.roomCode}`);
-        } else {
-          this.setState({ error: "Room not found." });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 }
